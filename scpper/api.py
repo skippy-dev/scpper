@@ -203,8 +203,8 @@ class Page:
         data = json.loads(res.text)
         if "error" in data:
             raise scpper.utils.NotFoundException(data["error"])
-        else:
-            return data
+        
+        return data
 
     @property
     def site(self):
@@ -312,8 +312,8 @@ class User:
         data = json.loads(res.text)
         if "error" in data:
             raise scpper.utils.NotFoundException(data["error"])
-        else:
-            return data
+        
+        return data
 
     @property
     def name(self):
