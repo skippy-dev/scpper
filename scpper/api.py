@@ -180,7 +180,8 @@ class Page:
     # Properties
     ###########################################################################
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def _data(self):
 
         """Retrieves a page data by id.
@@ -203,63 +204,78 @@ class Page:
         
         return data
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def site(self):
         return self._data["site"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def name(self):
         return self._data["name"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def title(self):
         return self._data["title"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def altTitle(self):
         return self._data["altTitle"]
     
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def status(self):
         return self._data["status"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def kind(self):
         return self._data["kind"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def creationDate(self):
         return self._data["creationDate"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def rating(self):
         return self._data["rating"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def cleanRating(self):
         return self._data["cleanRating"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def contributorRating(self):
         return self._data["contributorRating"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def adjustedRating(self):
         return self._data["adjustedRating"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def wilsonScore(self):
         return self._data["wilsonScore"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def rank(self):
         return self._data["rank"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def authors(self):
         return self._data["authors"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def deleted(self):
         return self._data["deleted"]
 
@@ -289,7 +305,8 @@ class User:
     # Properties
     ###########################################################################
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def _data(self):
 
         """Retrieves a user data by id.
@@ -312,19 +329,23 @@ class User:
         
         return data
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def name(self):
         return self._data["name"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def displayName(self):
         return self._data["displayName"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def deleted(self):
         return self._data["deleted"]
 
-    @functools.cached_property
+    @property
+    @functools.lru_cache()
     def activity(self):
         activity = {}
         for branch in self._data["activity"]:
