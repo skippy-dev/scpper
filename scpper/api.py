@@ -4,10 +4,7 @@
 
 import scpper.utils
 
-try:
-    from collections.abc import namedtuple
-except ImportError:
-    from collections import namedtuple
+import functools
 import json
 
 ###############################################################################
@@ -183,7 +180,7 @@ class Page:
     # Properties
     ###########################################################################
 
-    @property
+    @functools.cached_property
     def _data(self):
 
         """Retrieves a page data by id.
@@ -206,63 +203,63 @@ class Page:
         
         return data
 
-    @property
+    @functools.cached_property
     def site(self):
         return self._data["site"]
 
-    @property
+    @functools.cached_property
     def name(self):
         return self._data["name"]
 
-    @property
+    @functools.cached_property
     def title(self):
         return self._data["title"]
 
-    @property
+    @functools.cached_property
     def altTitle(self):
         return self._data["altTitle"]
     
-    @property
+    @functools.cached_property
     def status(self):
         return self._data["status"]
 
-    @property
+    @functools.cached_property
     def kind(self):
         return self._data["kind"]
 
-    @property
+    @functools.cached_property
     def creationDate(self):
         return self._data["creationDate"]
 
-    @property
+    @functools.cached_property
     def rating(self):
         return self._data["rating"]
 
-    @property
+    @functools.cached_property
     def cleanRating(self):
         return self._data["cleanRating"]
 
-    @property
+    @functools.cached_property
     def contributorRating(self):
         return self._data["contributorRating"]
 
-    @property
+    @functools.cached_property
     def adjustedRating(self):
         return self._data["adjustedRating"]
 
-    @property
+    @functools.cached_property
     def wilsonScore(self):
         return self._data["wilsonScore"]
 
-    @property
+    @functools.cached_property
     def rank(self):
         return self._data["rank"]
 
-    @property
+    @functools.cached_property
     def authors(self):
         return self._data["authors"]
 
-    @property
+    @functools.cached_property
     def deleted(self):
         return self._data["deleted"]
 
@@ -292,7 +289,7 @@ class User:
     # Properties
     ###########################################################################
 
-    @property
+    @functools.cached_property
     def _data(self):
 
         """Retrieves a user data by id.
@@ -315,23 +312,23 @@ class User:
         
         return data
 
-    @property
+    @functools.cached_property
     def name(self):
         return self._data["name"]
 
-    @property
+    @functools.cached_property
     def displayName(self):
         return self._data["displayName"]
 
-    @property
+    @functools.cached_property
     def deleted(self):
         return self._data["deleted"]
 
-    @property
+    @functools.cached_property
     def activity(self):
         activity = {}
         for branch in self._data["activity"]:
-            activity[branch] = Activity(self._data["activity"][branch]["votes"],
+            activity[branch] = scpper.utils.Activity(self._data["activity"][branch]["votes"],
                 self._data["activity"][branch]["revisions"],
                 self._data["activity"][branch]["pages"],
                 self._data["activity"][branch]["lastActive"],
@@ -340,11 +337,3 @@ class User:
                 self._data["activity"][branch]["totalRating"],
                 )
         return activity
-
-###############################################################################
-# Named Tuple Containers
-###############################################################################
-
-nt = namedtuple
-Activity = nt("Activity", "votes revisions pages lastActive member highestRating totalRating")
-del nt

@@ -4,6 +4,10 @@
 
 import requests
 import logging
+try:
+    from collections.abc import namedtuple
+except ImportError:
+    from collections import namedtuple
 
 ###############################################################################
 # Global Constants And Variables
@@ -59,3 +63,11 @@ class InsistentRequest(requests.Session):
 ###############################################################################
 
 class NotFoundException(Exception): pass
+
+###############################################################################
+# Named Tuple Containers
+###############################################################################
+
+nt = namedtuple
+Activity = nt("Activity", "votes revisions pages lastActive member highestRating totalRating")
+del nt
