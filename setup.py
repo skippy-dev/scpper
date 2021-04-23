@@ -16,7 +16,7 @@ setuptools.setup(
     url='https://github.com/skippy-dev/scpper/',
     author='MrNereof',
     author_email='mrnereof@gmail.com',
-    python_requires='>=3.9',
+    python_requires='>=3.8',
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
