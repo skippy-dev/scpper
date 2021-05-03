@@ -54,8 +54,6 @@ class Scpper:
         """Retrieves up to limit pages from the specified wiki with part of the name matching title.
 
         Args:
-            site: 
-                Short name from the list of available sites (see below)
             title: 
                 Search query, part of page's name (i.e. "173" will match "SCP-173", "SCP-1173", etc). Between 3 and 256 characters.
             limit: 
@@ -90,8 +88,6 @@ class Scpper:
         """Retrieves up to limit users from the with part of the name matching name.
 
         Args:
-            site: 
-                Optional. Short name from the list of available sites (see below). If specified, only searches amongst members of the site. Otherwise - amongst all users.
             name: 
                 Search query, part of user's name (i.e. "cle" will match "Dr Clef", "Agent MacLeod", etc). Between 3 and 256 characters.
             limit: 
@@ -116,13 +112,11 @@ class Scpper:
 
         return [User(user["id"]) for user in users]
 
-    def tags(self, method, tags, limit=50, random=0):
+    def tags(self, tags, method="and", limit=50, random=0):
 
         """Retrieves up to limit pages from the specified wiki, selected using provided tags.
 
         Args:
-            site: 
-                Short name from the list of available sites (see below)
             method: 
                 How to combine provided tags for the query ("and"/"or")
                 "and" - only pages that have all the tags (default)
