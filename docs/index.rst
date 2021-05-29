@@ -8,7 +8,7 @@ Welcome to scpper's documentation!
 
 .. _ScpperDB API: https://github.com/FiftyNine/ScpperDB
 
-``pyCraft`` is a Python wrapper for ScpperDB API.
+``scpper`` is a Python wrapper for ScpperDB API.
 
 Contents:
  
