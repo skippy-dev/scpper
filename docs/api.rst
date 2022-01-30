@@ -1,4 +1,4 @@
-.. currentmodule:: scpper
+.. currentmodule:: scpper.api
 
 API Reference
 ===============
